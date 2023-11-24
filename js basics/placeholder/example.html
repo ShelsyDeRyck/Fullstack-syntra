@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+    
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Fetch API</h1>
+            <input id="movie" type="text" class="form-control mb-2">
+            <button id="buttonmovie" class="btn btn-primary">Get Movie</button>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div id="resultName" class="col-md-6"></div>
+        <div id="resultYear" class="col-md-6"></div>
+
+    </div>
+</div>
+
+<script>
+   //function getMovie () {
+    // OLD ES5 notation ...
+//     fetch('url').then(
+//         function (res) {
+//             return res.json();
+//         }
+//     ).then(
+//         function (data) {
+//             console.log(data);
+//             // return
+//         }
+//     ).catch();
+//    }
+
+// NEW ES6 NOTATION
+
+
+
+function getMovie () {
+valueMovie = document.getElementById('movie').value;
+
+fetch('https://www.omdbapi.com/?i=tt3896198&apikey=d67c387a&s='+valueMovie).then(result => result.json()).then(
+ 
+ data => {
+   let i = 0;
+   while (i < data['Search'].length) {
+     document.getElementById('resultName').innerHTML += data['Search'][i].Title + '<hr>';
+     document.getElementById('resultYear').innerHTML += data['Search'][i].Year + '<hr>';
+     console.log(data.Search[i].Title);
+     i++;
+   }
+ }
+ ).catch();
+}
+
+// same principal as the OMDBAPI movie restapi.. so this is our result... our dataset
+// created by the OMDBAPI developers! 
+   obj = {Search:[
+    {obj1:'value1'},
+    {obj2:'value2'}
+   ]};
+
+   console.log(obj['Search'][1].obj2)
+
+// Make sure to declare variables with 'const' or 'let'
+const getMovie2 = async () => {
+    const valueMovie = document.getElementById('movie').value;
+    const url = 'https://www.omdbapi.com/?i=tt3896198&apikey=d67c387a&s=' + valueMovie;
+
+    // async await fetch
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+   
+    for (let i = 0; i < data['Search'].length; i++) {
+        document.getElementById('resultName').innerHTML += data['Search'][i].Title + '<hr>';
+    }
+
+    console.log(data);
+}
+
+// Pass the function reference without invoking it
+document.getElementById('buttonmovie').addEventListener('click', getMovie2);
+
+</script>
+</body>
+</html>

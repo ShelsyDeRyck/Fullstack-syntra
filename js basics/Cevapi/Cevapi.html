@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cevapi</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>Order</h1>
+    <div>
+        <div class="column">
+            <button class="btn btn-primary" onclick="OrderItems(0)">add
+                 bread</button>
+            <button class="btn btn-primary" onclick="OrderItems(1)">add
+                 meat</button>
+            <button class="btn btn-primary" onclick="OrderItems(2)">add
+                 Saus</button>
+            <button class="btn btn-primary" onclick="OrderItems(3)">add
+                 veggie</button>
+        </div>
+        <div class="column">
+            
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                  Your order
+                </div>
+                <ul class="list-group list-group-flush" id="ingredients">
+                  <li class="list-group-item">An item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+            </div>
+            
+            <h2>Total: </h2>
+            <button class="btn btn-success" id="order"></button>
+        </div>
+    </div>
+   
+</body>
+<script>
+    let ingredientObj = {'bread':0, 'meat':0, 'saus':0,'veggie':0 };
+    let pricesObj = {'bread':4, 'meat':5, 'saus':2,'veggie':2};
+
+    let myOrder = document.getElementById('ingredients');
+    let total = document.getElementById('order');
+
+    myOrder.innerHTML= ChangeHtml()
+    total.innerHTML = totalOrder();
+
+    function ChangeHtml()
+    {
+        let str='';
+        for(key in ingredientObj){
+            str += `<li class="list-group-item">${key} (${ingredientObj[key]}): ${ingredientObj[key] * pricesObj[key]}eur</li>`;
+        }
+        return str;
+    }
+
+    function totalOrder(){
+        let tot =0 ;
+        for(key in ingredientObj){
+            tot += ingredientObj[key] * pricesObj[key];
+        }
+        return tot
+    }
+
+    function OrderItems(idx)
+    {
+        // console.log(idx);
+        switch(idx)
+        {
+            case 0:
+                ingredientObj.bread +=1;
+                console.log("added bread");
+            break;
+            case 1:
+                ingredientObj.meat +=1;
+                console.log("added meat");
+            break;
+            case 2:
+                ingredientObj.saus +=1;
+                console.log("added saus");
+            break;
+            case 3:
+                ingredientObj.veggie +=1;
+                console.log("added veggie");
+            break;
+        }
+
+        // console.log(ingredientObj)
+        myOrder.innerHTML= ChangeHtml()
+        total.innerHTML = totalOrder();
+    }
+
+</script>
+</html>

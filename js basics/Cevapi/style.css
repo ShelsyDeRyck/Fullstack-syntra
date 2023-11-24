@@ -1,0 +1,17 @@
+div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 20px;
+}
+
+btn.btn-primary
+{
+    padding-bottom: 20px;
+}
+
+div.column
+{
+    display: flex;
+    flex-direction: column;
+}

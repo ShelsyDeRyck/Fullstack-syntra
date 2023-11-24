@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="result"></p>
+</body>
+<script>
+    myArray = [1,2,3];
+	myObject = {'num1':1, "num2":2, "num3":3};
+	
+	let myResult = document.getElementById('result');
+	myResult.innerHTML = "this changed the innerhtml of the id result";
+
+	//iteration of array
+	for(let i=0; i < myArray.length;i++)
+	{
+		console.log(myArray[i]);
+	}
+
+	//it of obj
+	for(key in myObject)
+	{
+		console.log(key);
+		console.log(myObject[key]);
+	}
+
+    //add to array
+    myArray.push(10);
+    myArray[myArray.length] = 11
+
+    //add to object
+    myObject.num4 = 4;
+
+    //use case cevapi api
+    let order={};
+    order.type = "small"
+    order.sandwich = 4;
+    order.saus = 2;
+    order.schotel = 3;
+
+
+    console.log(order)
+
+    let totalPrice=0;
+    for(key in order)
+    {
+        if(Number.isInteger(order[key]))
+        {
+            totalPrice += order[key];
+        }   
+    }
+
+    myResult.innerHTML = "this is the total price: " + totalPrice;
+</script>
+</html>

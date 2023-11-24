@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Mijn leeftijd:</h2>
+    <div id="result"></div>
+    <div id="loopresult"></div>
+    <div id="resultif"></div>
+</body>
+</html>
+<script>
+// PLAIN VANILLA JAVASCRIPT
+
+let age1 = 30;
+let age2 = 3;
+
+let resultAge = age1 - age2;
+document.getElementById("result").innerHTML = resultAge;
+
+// Declare variables otherwise they do not exist
+let loopresult;
+let i = 0;
+
+// while will execute the code as long as the condition is true
+
+while (i <= 30) {
+    // code
+    loopresult = i++;
+    // i++ equals i = i + 1
+    document.getElementById("loopresult").innerHTML += loopresult;
+    console.log(i);
+} 
+
+// if will execute the code if the condition is true
+let myNumber = 11;
+
+if (myNumber > 10) {
+    // if true execute
+    document.getElementById("resultif").innerHTML = "My number is greater than 10";
+} else {
+    document.getElementById("resultif").innerHTML = "My number is less than 10";
+}
+
+// camelCase
+// variables: choose naming wisely... always start with Alphanumeric never with numbers
+// prefer camelCase
+
+// PascalCase
+// snake_case
+// kebab-case
+
+
+
+</script>

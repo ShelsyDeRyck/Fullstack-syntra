@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Document</title> -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h3>Todo's</h3>
+    <div class="list-group" id="js-placeholder">
+      <label class="list-group-item d-flex gap-2">
+        <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked="">
+        <span>
+          Template
+          <small class="d-block text-body-secondary">template</small>
+        </span>
+      </label>
+    </div>
+</body>
+<script>
+    let url = 'https://jsonplaceholder.typicode.com/todos';
+    function getData(data)
+    {
+        //hier is data beschikbaar
+        console.log(data)
+    }
+    const getTodo = async() => {
+        // try{
+        //     const response = await fetch(url);
+        //     const data = await response.json();
+        //     console.log(data);
+        // }
+        // catch{
+        //     console.error(error)
+        // }
+
+        fetch(url).then(res => res.json()).
+        then(
+            data =>
+            {
+                getData(data);
+                updatePage(data);
+            }
+        ).catch(error => console.log(error));
+    }
+
+    updatePage = (data) => {
+      inhtmlstr = "";
+      for (obj in data)
+      {
+        // console.log(data[obj])
+        const title = data[obj].title;
+        const completed = Boolean(data[obj].completed);
+
+        str = `<label class="list-group-item d-flex gap-2">
+                <input class="form-check-input flex-shrink-0" type="checkbox" value='' disabled="true">
+                  <span>${title}</span>
+                </label>`;
+
+        strStrikethough  = `<label class="list-group-item d-flex gap-2">
+                              <input class="form-check-input flex-shrink-0" type="checkbox" value checked disabled="true">
+                                <span>${title}</span>
+                            </label>`;
+
+        //console.log(completed) 
+        if(!completed)
+        {
+          // inhtmlstr += `<p>${title}</p><hr>`
+          inhtmlstr += str;
+
+        }
+        else if(completed){
+          // inhtmlstr += `<p><s>${title}</s></p><hr>`
+          inhtmlstr += strStrikethough;
+        }
+
+      }
+
+      let blocks = document.getElementById('js-placeholder');
+      blocks.innerHTML= inhtmlstr;
+    }
+
+    getTodo();
+
+
+</script>
+</html>
