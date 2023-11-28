@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xmas SyntraPxl</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <style>
+        div#christmas,div#halloween{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .toggle.ios, .toggle-on.ios, .toggle-off.ios { border-radius: 20px; }
+        .toggle.ios .toggle-handle { border-radius: 20px; }
+        h1, h4{font-weight:100; color: rgb(179, 179, 179);}
+        input#flexSwitchCheckDefault{
+            width: 40vh;
+            height: 20vh;
+            background-image: url('https://images.creativefabrica.com/products/thumbnails/2023/09/12/bKEZTMx1c/2VI5Na7cLxJQIiZezI5zZU5eJNy.png');
+        }
+        .form-switch .form-check-input{
+            background-color: #9c1010;
+        }
+        .form-switch .form-check-input:checked{
+            background-color: black;
+        }
+       
+    </style>
+</head>
+<body id="body">
+    <div id="christmas">
+        <img src="https://www.syntra.be/wp-content/uploads/2022/07/Synta-logo-500x286.png" alt="SyntraPxl" width="500px">
+        <h1>Activate christmas</h1>
+        <h4>Did mary conceive jesus through an intervention of the holy spirit? <b>if you really want to know:</b></h4>
+        <h4><b>Please activate christmas before it is too late</b></h4>
+
+        <div id="js-placeholder-time"></div>
+
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" size="300px" onclick="doSomething()">
+            <!-- <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label> -->
+        </div>
+
+    </div>
+    <div class="halloween" id="halloween">
+        <h1>NEVER it will always be halloween</h1>
+    </div>
+    
+</body>
+<script>
+
+let halloweenDiv = document.getElementById('halloween');
+
+updateCountdown = () => {
+    // Get the current date
+let currentDate = new Date();
+
+// Set the target date to Christmas of the current year
+let targetDate = new Date(currentDate.getFullYear(), 11, 25); // Months are zero-based, so 11 is December
+
+// Calculate the time difference in milliseconds
+let timeDifference = targetDate.getTime() - currentDate.getTime();
+
+// Calculate the days, hours, minutes, and seconds remaining
+let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+let seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+// Display the result
+let resultDiv = document.getElementById('js-placeholder-time');
+resultDiv.innerHTML ='Time until Christmas: ' + days + ' days, ' + hours + ' hours, ' + minutes + ' minutes, ' + seconds + ' seconds';
+}
+
+doSomething = () =>
+{
+    let resultDiv = document.getElementById('christmas');
+    let body = document.getElementById('body')
+    if(resultDiv.hidden)
+    {
+        resultDiv.hidden =false;
+        body.style.backgroundImage = 'none';
+    }
+    else{
+        resultDiv.hidden =true;
+        body.style.backgroundImage = 'url("https://wallpapercave.com/wp/yUmHZQ6.jpg")';
+        body.style.backgroundSize = 'cover';
+        body.style.backgroundRepeat = 'no-repeat';
+        halloweenDiv.hidden = false;
+    }
+}
+
+setInterval(updateCountdown, 1000);
+halloweenDiv.hidden = true;
+updateCountdown();
+</script>
+</html>
