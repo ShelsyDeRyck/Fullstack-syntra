@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>X-MAS budget: {{ xmasbudget - totalPrice| currency:'EUR'}}</h2>
+      <h4>Please increase or decrease your x-mas spririt feeling</h4>
+      <button (click)="increaseCount()" class="btn btn-primary">Increase</button>
+      <button (click)="decreaseCount()" class="btn btn-danger m-1">Decrease</button>
+      <p>{{ count }}pt of X-MAS SPIRIT</p>
+      <!--   <p>URL api : {{ url }}</p>
+            <p>URL users : {{ urlUsers }}</p> -->
+      <!--     <p>{{ users | json}}</p -->
+       
+
+      <h3>The present</h3>
+      <input class="form-control mb-1  " type="text" [(ngModel)]="myContent" placeholder="New present">
+      <input class="form-control mb-1  " type="text" [(ngModel)]="price" placeholder="Price">
+      <h3>The family members</h3>
+      <select class="form-control mb-2" [(ngModel)]="user">
+        @for (user of users; track user.id) {
+        <option name [value]="user.name">{{ user.name }}</option>
+        }
+      </select>
+     <!--  {{ user }} -->
+      <!-- <h2>{{ myContent | uppercase}}</h2> -->
+
+      <button (click)="postData()" class="btn btn-primary mb-2">Post</button>
+
+      <h3>My Shoppinglist - {{totalPrice | currency:'EUR'}}</h3>
+      @for(todo of todos; track todo.id) {
+      @if (todo.done) {
+      <li style="text-decoration: line-through; color: rgb(205, 205, 205)">
+        <button (click)="doneTodo(todo.id)" class="btn btn-sm btn-success m-1">Done</button>
+        <button (click)="deleteTodo(todo.id)" class="btn btn-sm btn-danger">X</button> {{ todo.title }} - {{
+        todo.owner }} - {{ todo.price }} EUR
+      </li>
+      } @else {
+      <li>
+        <button (click)="doneTodo(todo.id)" class="btn btn-sm btn-success m-1">Done</button>
+        <button (click)="deleteTodo(todo.id)" class="btn btn-sm btn-danger">X</button> {{ todo.title }} - {{
+        todo.owner }}  - <span class="eur">{{ todo.price }} EUR</span>
+      </li>
+      }
+      }
+    </div>
+  </div>
+</div>

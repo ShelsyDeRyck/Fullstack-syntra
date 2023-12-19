@@ -1,0 +1,47 @@
+{
+  "presents": [
+    {
+      "id": 1,
+      "title": "Soupmaker",
+      "owner": "V",
+      "price": 35,
+      "done": true
+    },
+    {
+      "title": "drone",
+      "owner": "M",
+      "price": 100,
+      "done": true,
+      "id": 4
+    },
+    {
+      "title": "New present",
+      "owner": "A",
+      "price": "100",
+      "done": false,
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "V",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "name": "Z",
+      "password": "123"
+    },
+    {
+      "id": 3,
+      "name": "A",
+      "password": "123"
+    },
+    {
+      "id": 4,
+      "name": "M",
+      "password": "123"
+    }
+  ]
+}
