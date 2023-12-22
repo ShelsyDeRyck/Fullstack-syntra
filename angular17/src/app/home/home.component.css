@@ -1,0 +1,46 @@
+/* _______ budget _______ */
+
+.budget{
+    /* padding: 10 px 5px; */
+    margin: 10px 5px;
+    background-color: #dc3545ab;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button{
+    margin-left: 10px;
+}
+
+/* _______ present _______ */
+
+.present{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.present input{
+    max-width: 40%;
+}
+
+/* _______ receiver _______ */
+
+.receiver{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.receiver select{
+    max-width: 40%;
+}
+
+/* _______ shoppinglist _______ */
+
+.shoppinglist{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
