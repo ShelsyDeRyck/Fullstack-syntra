@@ -7,28 +7,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <style>
-        body,html{
-            height: 100%;
-            width: 100%;
-        }
+        
         body{
             background-image: url(images/background.png);
             background-size: cover;
             background-repeat: no-repeat;
             margin: 0px;
             overflow-x: hidden;
-        }
-        #imagecontainer{
-            position: relative;
-            z-index: 0;
-        }
-        #leftimg{
-            position: absolute;
-            left: 0px;
-        }
-        #rightimg{
-            position: absolute;
-            right: 0px;
         }
         #text-center{
             position: absolute;
@@ -51,6 +36,7 @@
             border-radius: 50%;
             object-fit: cover;
             top: -9px;
+            left: 37vw;
             /* margin: auto!important; */
         } 
         .navbar{
@@ -63,58 +49,22 @@
     </style>
 </head>
 <body>
-   <div id="imgcontainer">
-    <img id="leftimg" src="images/smallLeftBush.png" alt="tree" height="100%" bottom="0px" left="0px">
-    <img id="rightimg" src="images/smallRightBush.png" alt="tree" height="100%" bottom="0px" right="100vw">
-   </div>
-   <button id="text-center" onclick=openForest()>click to open forest</button>
-
-    <div class="container vw-100">
+    <div class="container">
         <div class="row">
-            <nav class="navbar navbar-expand-lg">
+            <nav class="navbar">
                 <p class="mx-auto my-auto">Shelsy De Ryck</p>
-                <div class="mx-auto">
+                <div>
                     <img class ="img-fluid " src="images/picture2.jpg" alt="my image">
                 </div>
-                <p class="mx-auto my-auto">Fullstack web Developer</p> 
+                <p class="mx-auto my-auto">Curriculum Vitae</p>
             </nav>
         </div>
     </div>
 
+    
+
 </body>
 <script>
-    function openForest(){
-    let leftPosition = 0;
-    let rightPosition = 0;
 
-    const moveImages = () => {
-    const leftImg = document.getElementById('leftimg');
-    const rightImg = document.getElementById('rightimg');
-    const text = document.getElementById('text-center');
-    text.style.display = 'none';
-
-    // Move left image
-    leftPosition -= 10;
-    leftImg.style.left = `${leftPosition}px`;
-
-    // Stop moving when the image has moved 200px to the left
-   if (leftPosition <= -640) {
-       clearInterval(intervalId);
-       leftImg.style.display = 'none';
-       rightImg.style.display = 'none';
-   }
-
-    // Move right image
-    rightPosition -= 10;
-    rightImg.style.right = `${rightPosition}px`;
-    };
-
-    // Call the function every 25ms
-    const intervalId = setInterval(moveImages, 25);
-
-
-    // To show scrollbars
-// $("body").css("overflow", "auto");
-}
 </script>
 </html>
